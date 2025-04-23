@@ -9,7 +9,7 @@ from fastapi.responses import JSONResponse
 import shutil
 import os
 
-port = 9645
+port = 7860
 # api
 app = FastAPI()
 
