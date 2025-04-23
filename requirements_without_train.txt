@@ -8,3 +8,4 @@ matplotlib
 tqdm
 fastapi
 uvicorn
+httpx[http2]
