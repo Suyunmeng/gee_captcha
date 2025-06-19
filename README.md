@@ -67,9 +67,9 @@ pip install -r requirements_without_train.txt
 由于轨迹问题，可能会出现验证正确但是结果失败，所以建议增加retry次数，训练后的paddle模型正确率在99.9%以上
 ### 5-b.使用docker启动服务 
 
-镜像地址为<span id="docker">luguoyixiazi/test_nine:25.3.21</span>
+镜像地址为<span id="docker">luguoyixiazi/test_nine:25.6.20</span>
 
-运行时只需指定绑定的port即可
+运行时只需指定绑定的port即可，api端口为/pass_nine，必填参数gt、challenge
 
 ### 6.api调用
 
