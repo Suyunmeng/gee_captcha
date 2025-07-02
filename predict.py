@@ -1,6 +1,5 @@
 import os
 import numpy as np
-from train import MyResNet18, data_transform
 from crop_image import crop_image, convert_png_to_jpg,draw_points_on_image,bytes_to_pil,validate_path
 import time
 from PIL import Image, ImageDraw
@@ -10,6 +9,7 @@ import onnxruntime as ort
 
 def predict(icon_image, bg_image):
     import torch
+    from train import MyResNet18, data_transform
     current_dir = os.path.dirname(os.path.abspath(__file__))
     model_path = os.path.join(current_dir, 'model', 'resnet18_38_0.021147585306924.pth')
     coordinates = [

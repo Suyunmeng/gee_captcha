@@ -15,13 +15,14 @@ from predict import predict_onnx,predict_onnx_pdl,predict_onnx_dfine
 from crop_image import crop_image_v3,save_path,save_fail_path,save_pass_path,validate_path
 
 PORT = 9645
+platform = os.name
 # --- 日志配置字典 ---
 LOGGING_CONFIG = {
     "version": 1,
     "disable_existing_loggers": False,
     "formatters": {
         "default": {
-            "()": "uvicorn._logging.DefaultFormatter",
+            "()": f"uvicorn.{'_logging' if platform== 'nt' else 'logging'}.DefaultFormatter",
             "fmt": "%(levelprefix)s %(asctime)s | %(message)s",
             "datefmt": "%Y-%m-%d %H:%M:%S",
         },
