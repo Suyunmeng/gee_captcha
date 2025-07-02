@@ -10,8 +10,8 @@ from cryptography.hazmat.primitives import padding, serialization
 from cryptography.hazmat.primitives.asymmetric.padding import PKCS1v15
 from crop_image import validate_path
 from os import path as PATH
-
-
+import os
+os.environ['https_proxy']="http://127.0.0.1:10809"
 class Crack:
     def __init__(self, gt=None, challenge=None):
         self.pic_path = None
@@ -440,9 +440,10 @@ Bm1Zzu+l8nSOqAurgQIDAQAB
         pic_url = "https://" + data["resource_servers"][0][:-1] + data["pic"]
         pic_data = self.session.get(pic_url).content
         pic_name = data["pic"].split("/")[-1]
+        pic_type = data["pic_type"]
         with open(PATH.join(validate_path,pic_name),'wb+') as f:
             f.write(pic_data)
-        return pic_data,pic_name
+        return pic_data,pic_name,pic_type
 
     def verify(self, points: list):
         u = self.enc_key

@@ -1,6 +1,5 @@
 from PIL import Image, ImageFont, ImageDraw, ImageOps
 from io import BytesIO
-import cv2
 import numpy as np
 import os
 current_path = os.getcwd()
@@ -12,8 +11,8 @@ os.makedirs(validate_path,exist_ok=True)
 os.makedirs(save_path,exist_ok=True)
 os.makedirs(save_pass_path,exist_ok=True)
 os.makedirs(save_fail_path,exist_ok=True)
-
 def draw_points_on_image(bg_image, answer):
+    import cv2
     # 将背景图片转换为OpenCV格式
     bg_image_cv = cv2.imdecode(np.frombuffer(bg_image, dtype=np.uint8), cv2.IMREAD_COLOR)
     
@@ -53,6 +52,10 @@ def convert_png_to_jpg(png_bytes: bytes) -> bytes:
     # 返回保存后的 JPG 图像的 bytes
     return output_bytes.getvalue()
 
+def bytes_to_pil(image_bytes):
+    image  = Image.open(BytesIO(image_bytes))
+    image = image.convert('RGB')
+    return image
 
 def crop_image(image_bytes, coordinates):
     img = Image.open(BytesIO(image_bytes))
@@ -84,8 +87,7 @@ def crop_image_v3(image_bytes):
                     [[232, 232], [344, 344]],#第三行
                     [[2, 344], [42, 384]] #要验证的
                   ]
-    image  = Image.open(BytesIO(image_bytes))
-    image = Image.fromarray(cv2.cvtColor(np.array(image), cv2.COLOR_RGBA2RGB))
+    image  = bytes_to_pil(image_bytes)
     imageNew = Image.new('RGB', (300,261),(0,0,0))
     images = []
     for i, (start_point, end_point) in enumerate(coordinates):
