@@ -280,7 +280,7 @@ def predict_onnx_dfine(image,draw_result=False):
             rebuild_color[class_id] = colors[i % len(colors)]
     result = {k: [] for k in unique_labels}
     for i, box in enumerate(filtered_boxes):
-        if box[3]>160 and box[4] < 45:
+        if box[2]>160 and box[3] < 45:
             continue
         label_val = filtered_labels[i]
         class_id = int(label_val)
