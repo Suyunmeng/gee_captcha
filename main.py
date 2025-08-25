@@ -14,7 +14,7 @@ from fastapi import FastAPI,Query, HTTPException
 from predict import predict_onnx,predict_onnx_pdl,predict_onnx_dfine
 from crop_image import crop_image_v3,save_path,save_fail_path,save_pass_path,validate_path
 
-PORT = int(os.getenv('PORT', 9645))
+PORT = 9645
 platform = os.name
 # --- 日志配置字典 ---
 LOGGING_CONFIG = {
