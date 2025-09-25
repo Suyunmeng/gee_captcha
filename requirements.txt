@@ -1,4 +1,5 @@
 httpx
+httpx[http2]
 cryptography
 onnxruntime
 opencv-python
@@ -10,3 +11,4 @@ matplotlib
 tqdm
 uvicorn
 fastapi
+
