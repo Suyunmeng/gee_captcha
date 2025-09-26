@@ -205,7 +205,7 @@ def predict_onnx_pdl(images_path):
     print(f"识别完成{answer}，耗时: {time.time() - start}")
     with open(os.path.join(images_path,"nine.jpg"),'rb') as f:
         bg_image = f.read()
-    draw_points_on_image(bg_image, answer)
+    # draw_points_on_image(bg_image, answer)
     return answer
     
 def calculate_iou(boxA, boxB):
@@ -369,3 +369,4 @@ if __name__ == "__main__":
     # 使用PP-HGNetV2-B4.onnx
     #predict_onnx_pdl(r'img_saved\img_fail\7fe559a85bac4c03bc6ea7b2e85325bf')
     predict_onnx_dfine(r"n:\爬点选\dataset\3f98ff0c91dd4882a8a24d451283ad96.jpg",True)
+
