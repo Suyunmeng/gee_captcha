@@ -23,6 +23,7 @@ RUN pip install --no-cache-dir -r requirements_without_train.txt
 RUN mkdir -p model img_saved img_2_val
 
 RUN echo "Downloading..." && \
+    wget -O model/PP-HGNetV2-B4.onnx https://huggingface.co/luguoyixiazi/model_save/resolve/main/PP-HGNetV2-B4.onnx && \
     wget -O model/d-fine-n.onnx https://huggingface.co/luguoyixiazi/model_save/resolve/main/d-fine-n.onnx && \
     echo "Download Success."
 
