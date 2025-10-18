@@ -82,6 +82,7 @@ def load_dfine_model(name='d-fine-n.onnx'):
 
 
 def predict_onnx(icon_image, bg_image, point = None):
+    global session, input_name
     import cv2
     coordinates = [
         [1, 1],
@@ -154,6 +155,7 @@ def predict_onnx(icon_image, bg_image, point = None):
     return answer
 
 def predict_onnx_pdl(images_path):
+    global session, input_name
     coordinates = [
         [1, 1],
         [1, 2],
@@ -241,6 +243,7 @@ def non_maximum_suppression(detections, iou_threshold=0.35):
     return final_detections
 
 def predict_onnx_dfine(image,draw_result=False):
+    global session_dfine
     input_nodes = session_dfine.get_inputs()
     output_nodes = session_dfine.get_outputs()
     image_input_name = input_nodes[0].name
