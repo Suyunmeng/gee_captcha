@@ -29,7 +29,7 @@ RUN echo "Downloading..." && \
 
 COPY . .
 
-ENV use_pdl=0
+ENV use_pdl=1
 ENV use_dfine=1
 ENV PORT=7860
 
